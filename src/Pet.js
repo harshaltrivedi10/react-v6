@@ -1,12 +1,20 @@
 import React from "react";
 
-const Pet = ({ name, animal, breed }) => {
+const Pet = ({ name, animal, breed, images, location, id }) => {
+  let defaultImage = "http://pets-images.dev-apis.com/pets/none.jpg";
+  if (images) {
+    defaultImage = images[0];
+  }
   return (
-    <div>
-      <h2>{name}</h2>
-      <h3>{animal}</h3>
-      <h3>{breed}</h3>
-    </div>
+    <a href={`/details/${id}`} className="pet">
+      <div className="image-container">
+        <img src={defaultImage} alt={name} />
+      </div>
+      <div className="info">
+        <h1>{name}</h1>
+        <h2>{`${animal} - ${breed} - ${location}`}</h2>
+      </div>
+    </a>
   );
 };
 
